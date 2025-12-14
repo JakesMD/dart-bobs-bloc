@@ -1,0 +1,21 @@
+name: example
+publish_to: 'none'
+
+environment:
+  sdk: ^3.10.1
+
+dependencies:
+  bobs_bloc:
+    path: ../
+  bobs_jobs: ^0.1.0+1
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^9.1.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  very_good_analysis: ^10.0.0
+
+flutter:
+  uses-material-design: true

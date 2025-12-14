@@ -1,0 +1,15 @@
+name: bobs_bloc
+description: A package that takes advantage of BobsJobs to radically simplify bloc applications.
+version: 0.0.1
+repository: https://github.com/JakesMD/dart-bobs-bloc
+
+environment:
+  sdk: ^3.10.1
+
+dependencies:
+  bloc: ^9.1.0
+  bobs_jobs: ^0.1.0+1
+  
+  
+dev_dependencies:
+  very_good_analysis: ^10.0.0
