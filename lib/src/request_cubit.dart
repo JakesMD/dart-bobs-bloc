@@ -104,7 +104,7 @@ class BobsRequestCubitState<F, S> {
 
 /// A mixin that adds request handling capabilities to a Cubit using
 /// [BobsRequestCubitState].
-mixin BBobsRequestCubitMixin<F, S> on Cubit<BobsRequestCubitState<F, S>> {
+mixin BobsRequestCubitMixin<F, S> on Cubit<BobsRequestCubitState<F, S>> {
   /// Performs a request using the provided [job] and updates the Cubit's state
   /// accordingly.
   ///

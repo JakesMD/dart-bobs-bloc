@@ -24,30 +24,29 @@ class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   void onShufflePressed(BuildContext context) =>
-      context.read<BRandomNumberFetchCubit>().fetchRandomNumber();
+      context.read<RandomNumberFetchCubit>().fetchRandomNumber();
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => BRandomNumberFetchCubit(
+      create: (context) => RandomNumberFetchCubit(
         randomRepository: context.read(),
       ),
       child: Builder(
         builder: (context) => Scaffold(
           appBar: AppBar(title: const Text("Bob's Bloc Example")),
           body: Center(
-            child:
-                BlocBuilder<BRandomNumberFetchCubit, BRandomNumberFetchState>(
-                  builder: (context, state) => switch (state.status) {
-                    .initial => const Text('Generate a random number!'),
-                    .inProgress => const CircularProgressIndicator(),
-                    .succeeded => Text('${state.success}'),
-                    .failed => switch (state.failure!) {
-                      .unknown => const Text('Unknown error occurred.'),
-                      .overflow => const Text('Error: Overflowed'),
-                    },
-                  },
-                ),
+            child: BlocBuilder<RandomNumberFetchCubit, RandomNumberFetchState>(
+              builder: (context, state) => switch (state.status) {
+                .initial => const Text('Generate a random number!'),
+                .inProgress => const CircularProgressIndicator(),
+                .succeeded => Text('${state.success}'),
+                .failed => switch (state.failure!) {
+                  .unknown => const Text('Unknown error occurred.'),
+                  .overflow => const Text('Error: Overflowed'),
+                },
+              },
+            ),
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: () => onShufflePressed(context),
