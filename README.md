@@ -1,7 +1,7 @@
 # Bob's bloc
 
-A package that takes advantage of BobsJobs to radically simplify bloc
-applications.
+A package that takes advantage of [BobsJobs](https://pub.dev/packages/bobs_jobs)
+to radically simplify bloc applications.
 
 ![coverage][coverage_badge] [![pub package][pub_badge]][pub_link]
 ![style: very good analysis][very_good_analysis_badge]
