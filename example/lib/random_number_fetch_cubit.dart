@@ -2,11 +2,10 @@ import 'package:bobs_bloc/bobs_bloc.dart';
 import 'package:example/random_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-typedef RandomNumberFetchState =
-    BobsRequestCubitState<RandomNumberFetchException, int>;
+typedef RandomNumberFetchState = BobsBlocState<RandomNumberFetchException, int>;
 
 class RandomNumberFetchCubit extends Cubit<RandomNumberFetchState>
-    with BobsRequestCubitMixin {
+    with BobsCubitMixin {
   RandomNumberFetchCubit({required this.randomRepository}) : super(.initial());
 
   final RandomRepository randomRepository;

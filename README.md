@@ -11,12 +11,11 @@ to radically simplify bloc applications.
 
 ```dart
 // Define a your cubit state as a typedef.
-typedef RandomNumberFetchState =
-    BobsRequestCubitState<RandomNumberFetchException, int>;
+typedef RandomNumberFetchState = BobsBlocState<RandomNumberFetchException, int>;
 
-// Create your cubit with the BobsRequestCubitMixin.
+// Create your cubit with the BobsCubitMixin.
 class RandomNumberFetchCubit extends Cubit<RandomNumberFetchState>
-    with BobsRequestCubitMixin {
+    with BobsCubitMixin {
   RandomNumberFetchCubit({required this.randomRepository}) : super(.initial());
 
   final RandomRepository randomRepository;
@@ -34,10 +33,12 @@ BlocBuilder<RandomNumberFetchCubit, RandomNumberFetchState>(
         .initial => const Text('Generate a random number!'),
         .inProgress => const CircularProgressIndicator(),
         .succeeded => Text('${state.success}'),
-        .failed => switch (state.failure!) {
-            .unknown => const Text('Unknown error occurred.'),
-            .overflow => const Text('Error: Overflowed'),
-        },
+        .failed => Text(
+          switch (state.failure!) {
+            .unknown => 'Unknown error occurred.',
+            .overflow => 'Error: Overflowed',
+          },
+        ),
     },
 ),
 ```
@@ -45,9 +46,9 @@ BlocBuilder<RandomNumberFetchCubit, RandomNumberFetchState>(
 ### For more flexibility
 
 ```dart
-// Extend BobsRequestCubitState instead of using typedef.
+// Extend BobsBlocState instead of using typedef.
 class RandomNumberFetchState
-    extends BobsRequestCubitState<RandomNumberFetchException, int> {
+    extends BobsBlocState<RandomNumberFetchException, int> {
   RandomNumberFetchState.initial() : super.initial();
 
   RandomNumberFetchState.inProgress() : super.inProgress();

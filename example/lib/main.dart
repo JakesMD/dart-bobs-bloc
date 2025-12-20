@@ -41,10 +41,12 @@ class HomePage extends StatelessWidget {
                 .initial => const Text('Generate a random number!'),
                 .inProgress => const CircularProgressIndicator(),
                 .succeeded => Text('${state.success}'),
-                .failed => switch (state.failure!) {
-                  .unknown => const Text('Unknown error occurred.'),
-                  .overflow => const Text('Error: Overflowed'),
-                },
+                .failed => Text(
+                  switch (state.failure!) {
+                    .unknown => 'Unknown error occurred.',
+                    .overflow => 'Error: Overflowed',
+                  },
+                ),
               },
             ),
           ),
